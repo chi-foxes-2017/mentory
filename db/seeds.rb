@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# 20.times do
+#   Pairing.create!(
+#     mentor_id: rand(1..10),
+#     start_time: Faker::Time.forward(14, :night),
+
+# end
