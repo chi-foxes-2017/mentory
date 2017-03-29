@@ -1,0 +1,21 @@
+<h1>Add a new pairing offering</h1>
+
+<% if @errors %>
+  <span>Something went wrong...</span><br>
+  <ul>
+  <% @errors.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_for :pairing, url: new_user_pairing_path do |f| %>
+  <p>
+    <%= f.label :start_time %><br>
+    <%= f.text_field :start_time %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
