@@ -13,9 +13,22 @@
  *= require_tree .
  *= require_self
  */
+.nav-wrapper{
+  background-color: #19ABB5;
+}
 
-#splage-page{
-  max-height: 100%;
-  max-width: 100%;
+.nav-mobile-text{
+  color:#222222;
+}
 
+.brand-logo{
+  color:#222222;
+}
+
+body{
+  background-color: #F5F5F5;
+}
+
+h1, h2, h3, h4{
+  color: #2D425C;
 }
