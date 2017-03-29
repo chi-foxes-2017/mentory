@@ -1,0 +1,5 @@
+<li>
+    <span>Starts at: <%= offered_pairing.start_time %></span>
+    <span>With: <%= User.find(offered_pairing.mentor_id).name %></span>
+    <img src="<%= User.find(offered_pairing.mentor_id).url %>" alt="avatar">
+  </li>
