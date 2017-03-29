@@ -1,0 +1,10 @@
+<h1>Available Pairing Sessions</h1>
+
+<ul>
+<% @offered_pairings.each do |pairing| %>
+  <li>
+    <span>Starts at: <%= pairing.start_time %></span>
+    <span>With: <%= pairing.mentor_id %></span>
+  </li>
+<% end %>
+</ul>
