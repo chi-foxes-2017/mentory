@@ -17,6 +17,7 @@
       <%= link_to "Mentory", root_path, class: "brand-logo" %>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if logged_in? %>
+            <li><%= link_to '#{current_user.name}\'s page', user_path)current_user.id, method: :get %></li>
             <li><%= link_to 'Log out', session_path(session[:user_id]), method: :delete %></li>
           <% else %>
             <li><%= link_to 'Log in', new_session_path %></li>
