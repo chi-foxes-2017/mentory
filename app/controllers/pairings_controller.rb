@@ -29,6 +29,7 @@ class PairingsController < ApplicationController
   end
 
   def edit #get
+    return redirect_to new_user_pairing_path(current_user.id) if !authorized?(params[:user_id])
     @user = User.find(params[:user_id])
     @pairing = Pairing.find(params[:id])
     if @pairing.mentor_id == session[:user_id]
