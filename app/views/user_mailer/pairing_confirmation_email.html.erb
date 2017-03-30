@@ -7,7 +7,7 @@
     <h1>You have a new pair, <%= @mentor.name %></h1>
     <p>
       A mentee has signed up to pair with you,
-      <strong>Mentee: <%= @pairing.mentee_id %><br>
+      <strong>Mentee: <%= User.find_by(id: @pairing.mentee_id).name %><br>
       <strong>Date: </strong>
       <%= @pairing.start_time.strftime('%A, %b %d, %Y') %><br>
       <strong>Time: </strong>
