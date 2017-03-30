@@ -1,0 +1,9 @@
+<li>
+  <span>Starts at: <%= offered_pairing.start_time %></span>
+  <% @user = User.find(offered_pairing.mentor_id) %>
+  <span>With: <%= @user.name %></span>
+  <img src="<%= @user.url %>" alt="avatar">
+  <% if authorized?(offered_pairing.mentor_id) %>
+    <%= link_to "Reschedule", edit_user_pairing_path(current_user.id, offered_pairing.id) %>
+  <% end %>
+</li>

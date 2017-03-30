@@ -1,15 +1,8 @@
 <h1>Edit this Pairing</h1>
 
-<% if @errors %>
-  <span>Something went wrong...</span><br>
-  <ul>
-  <% @errors.each do |error| %>
-    <li><%= error %></li>
-  <% end %>
-  </ul>
-<% end %>
+<%= render '/shared/error_messages' %>
 
-<%= form_for :pairing, url: pairing_path(@pairing), method: :patch do |f| %>
+<%= form_for :pairing, url: user_pairing_path(@pairing), method: :patch do |f| %>
   <p>
     <%= f.label :start_time %><br>
     <%= f.text_field :start_time %>
