@@ -1,0 +1,10 @@
+<p>
+  <strong>Start Time: </strong>
+  <%= @pairing.start_time.strftime('%A, %b %d, %Y, %I:%M %p') %>
+</p>
+
+<p>
+  <strong>Mentor: </strong>
+  <%= User.find(@pairing.mentor_id).name %>
+</p>
+

@@ -9,7 +9,7 @@
   </ul>
 <% end %>
 
-<%= form_for :pairing, url: pairing_path(@pairing), method: :patch do |f| %>
+<%= form_for :pairing, url: user_pairing_path(@pairing), method: :patch do |f| %>
   <p>
     <%= f.label :start_time %><br>
     <%= f.text_field :start_time %>
