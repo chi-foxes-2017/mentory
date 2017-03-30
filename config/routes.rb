@@ -6,7 +6,5 @@ Rails.application.routes.draw do
     resources :pairings
   end
 
-
-
   root 'pairings#index'
 end
