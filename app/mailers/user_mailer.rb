@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-    default from: 'elizabethwhart@gmail.com'
+    default from: 'team.kek.dbc@gmail.com'
 
   def pairing_confirmation_email(mentor, pairing)
     @mentor = mentor
