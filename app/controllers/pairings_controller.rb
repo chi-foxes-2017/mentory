@@ -14,7 +14,7 @@ class PairingsController < ApplicationController
     @pairing = Pairing.new
   end
 
-  def update #post
+  def update
     @pairing = Pairing.find_by(id: params[:id])
     @mentor = User.find_by(id: @pairing.mentor_id)
     if params[:pairing][:topic]
@@ -40,7 +40,7 @@ class PairingsController < ApplicationController
     end
   end
 
-  def edit #get
+  def edit
     @user = User.find(params[:user_id])
     @pairing = Pairing.find(params[:id])
     if logged_in?
