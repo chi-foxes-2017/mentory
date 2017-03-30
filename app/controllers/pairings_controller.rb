@@ -39,7 +39,7 @@ class PairingsController < ApplicationController
 
   def create
     @pairing = Pairing.new(pairing_params)
-    @pairing.mentor_id = session[:user_id]
+    @pairing.mentor_id == session[:user_id]
     if @pairing.save
       redirect_to user_pairings_path
     else
@@ -50,8 +50,12 @@ class PairingsController < ApplicationController
 
   def destroy
     @pairing = Pairing.find(params[:id])
-    @pairing.destroy
-    redirect_to user_pairing_path
+    if @pairing.mentor_id == session[:user_id]
+      @pairing.destroy
+      redirect_to user_pairing_path
+    else
+      redirect_to login_path
+    end
   end
 
   private
