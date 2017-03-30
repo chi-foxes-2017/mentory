@@ -1,13 +1,6 @@
 <h1>Add a new pairing offering</h1>
 
-<% if @errors %>
-  <span>Something went wrong...</span><br>
-  <ul>
-  <% @errors.each do |error| %>
-    <li><%= error %></li>
-  <% end %>
-  </ul>
-<% end %>
+<%= render '/shared/error_messages' %>
 
 <%= form_for :pairing, url: user_pairings_path do |f| %>
   <p>
