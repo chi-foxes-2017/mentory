@@ -16,24 +16,24 @@ class PairingsController < ApplicationController
   def update #post
     @pairing = Pairing.find_by(id: params[:id])
     if @pairing.mentor_id == session[:user_id]
-      if @pairing.update(article_params)
+      if @pairing.update(pairing_params)
         redirect_to user_pairing_path
       else
         @errors = @pairing.errors.full_messages
         render 'edit'
       end
     else
-      redirect_to login_path
+      redirect_to new_session_path
     end
   end
 
   def edit #get
-    @user = User.find(params[:mentor_id])
-    @pairing = Pairings.find(params[:id])
+    @user = User.find(params[:user_id])
+    @pairing = Pairing.find(params[:id])
     if @pairing.mentor_id == session[:user_id]
       render 'edit'
     else
-      redirect_to login_path
+      redirect_to new_session_path
     end
   end
 
@@ -54,7 +54,7 @@ class PairingsController < ApplicationController
       @pairing.destroy
       redirect_to user_pairing_path
     else
-      redirect_to login_path
+      redirect_to new_session_path
     end
   end
 
