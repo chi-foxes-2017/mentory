@@ -1,4 +1,4 @@
-<li>
+<li id="pairing-<%= offered_pairing.id %>">
   <div class="card horizontal">
     <div class="card-image">
       <% @user = User.find(offered_pairing.mentor_id) %>
@@ -12,6 +12,9 @@
       <div class="card-action">
         <% if authorized?(offered_pairing.mentor_id) %>
           <%= link_to "Reschedule", edit_user_pairing_path(current_user.id, offered_pairing.id) %>
+        <% end %>
+        <% if logged_in? && (offered_pairing.mentor_id != current_user.id) %>
+          <%= link_to "Sign Up!", edit_user_pairing_path(offered_pairing.mentor_id, offered_pairing.id) %>
         <% end %>
       </div>
     </div>

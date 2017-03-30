@@ -2,13 +2,28 @@
 
 <%= render '/shared/error_messages' %>
 
-<%= form_for :pairing, url: user_pairing_path(@pairing), method: :patch do |f| %>
-  <p>
-    <%= f.label :start_time %><br>
-    <%= f.text_field :start_time %>
-  </p>
+<% if @pairing.mentor_id == current_user.id %>
+  <%= form_for :pairing, url: user_pairing_path(@pairing), method: :patch do |f| %>
+    <p>
+      <%= f.label :start_time %><br>
+      <%= f.text_field :start_time %>
+    </p>
 
-  <p>
-    <%= f.submit %>
-  </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+<% else %>
+  <%= form_for :pairing, url: user_pairing_path(@pairing), method: :patch do |f| %>
+    <p>
+      <%= f.label :topic %><br>
+      <%= f.text_field :topic %>
+    </p>
+    <p>
+      <% f.hidden_field :mentee_id, value: current_user.id %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
 <% end %>
