@@ -6,7 +6,8 @@
     </div>
     <div class="card-stacked">
       <div class="card-content">
-        <span>Starts at: <%= offered_pairing.start_time %></span>
+        <span>Date: <%= offered_pairing.start_time.strftime('%A, %b %d, %Y') %></span><br>
+        <span>Time: <%= offered_pairing.start_time.strftime('%I:%M %p') %></span><br>
         <span>With: <%= @user.name %></span>
       </div>
       <div class="card-action">
