@@ -71,6 +71,18 @@ class PairingsController < ApplicationController
     end
   end
 
+  def reschedule
+    @pairing = Pairing.find(params[:id])
+  end
+
+  def requested
+    pairing = Pairing.find(params[:id])
+    mentor = User.find(pairing.mentor_id)
+    request = params[:request]
+    UserMailer.reschedule_request_email(pairing, request, mentor).deliver_now
+    redirect_to root_path
+  end
+
   private
   def pairing_params
     params.require(:pairing).permit(:mentor_id, :start_time)

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= User.find_by(id: @pairing.mentee_id).name %> would like to reschedule the following pairing session:</h1>
+    <p>
+      <strong>Date: </strong>
+      <%= @pairing.start_time.strftime('%A, %b %d, %Y') %><br>
+      <strong>Time: </strong>
+      <%= @pairing.start_time.strftime('%I:%M %p') %>
+      <strong>Topic: </strong>
+      <%= @pairing.topic %>
+    </p>
+    <p>
+      <strong>Their request is as follows:</strong>
+      <strong><%= @request %></strong>
+    </p>
+    <p>
+      To login to the site, just follow this link: <a href="https://secure-crag-97355.herokuapp.com/sessions/new">Login!</a>
+    </p>
+    <p>Thanks for pairing and have a great day!</p>
+  </body>
+</html>
