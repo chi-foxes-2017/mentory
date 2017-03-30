@@ -16,8 +16,16 @@ class PairingsController < ApplicationController
 
   def update #post
     @pairing = Pairing.find_by(id: params[:id])
-    if @pairing.mentor_id == session[:user_id]
-      if @pairing.update(pairing_params)
+    @mentor = User.find_by(id: @pairing.mentor_id)
+    if params[:pairing][:topic]
+      update_params = add_mentee
+      @pairing.update_attribute(:mentee_id, current_user.id)
+    else
+      update_params = pairing_params
+    end
+
+    if logged_in?
+      if @pairing.update(update_params)
         redirect_to user_pairing_path
       else
         @errors = @pairing.errors.full_messages
@@ -26,13 +34,16 @@ class PairingsController < ApplicationController
     else
       redirect_to new_session_path
     end
+
+    if @pairing.mentee_id
+      UserMailer.pairing_confirmation_email(@mentor, @pairing).deliver_now
+    end
   end
 
   def edit #get
-    return redirect_to new_user_pairing_path(current_user.id) if !authorized?(params[:user_id])
     @user = User.find(params[:user_id])
     @pairing = Pairing.find(params[:id])
-    if @pairing.mentor_id == session[:user_id]
+    if logged_in?
       render 'edit'
     else
       redirect_to new_session_path
@@ -62,7 +73,10 @@ class PairingsController < ApplicationController
 
   private
   def pairing_params
-    params.require(:pairing).permit(:mentor_id, :topic, :start_time)
+    params.require(:pairing).permit(:mentor_id, :start_time)
   end
 
+  def add_mentee
+    params.require(:pairing).permit(:mentee_id, :topic)
+  end
 end

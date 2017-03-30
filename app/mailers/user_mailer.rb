@@ -1,9 +1,9 @@
-class UserMailer < ApplicationMailer
-    default from: 'notifications@mentory.com'
+class UserMailer < ActionMailer::Base
+    default from: 'elizabethwhart@gmail.com'
 
-  def pairing_confirmation_email(user)
-    @user = user
-    @url  = 'http://example.com/login'
-    mail(to: @user.email, subject: 'Someone signed up to pair with you!')
+  def pairing_confirmation_email(mentor, pairing)
+    @mentor = mentor
+    @pairing = pairing
+    mail(to: @mentor.email, subject: 'Someone signed up to pair with you!')
   end
 end
