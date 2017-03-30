@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def show
     # p params
     return redirect_to new_session_path if !logged_in?
-    return redirect root_path if !authorized?(params[:id])
+    return redirect_to root_path if !authorized?(params[:id])
   end
 
   def create
