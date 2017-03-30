@@ -1,0 +1,12 @@
+<%= User.find_by(id: @pairing.mentee_id).name %> would like to reschedule the following pairing session:
+===============================================
+
+    Date: <%= @pairing.start_time.strftime('%A, %b %d, %Y') %>
+    Time: <%= @pairing.start_time.strftime('%I:%M %p') %>
+    Topic: <%= @pairing.topic %>
+
+    Their request is as follows: <%= @request %>
+
+To login to the site, just follow this link: https://secure-crag-97355.herokuapp.com/sessions/new"
+
+Thanks for pairing and have a great day!

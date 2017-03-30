@@ -1,0 +1,7 @@
+<h1>Request a Reschedule</h1>
+
+<%= form_tag("/requested") do %>
+  <input type="text" name="request">
+  <input type="hidden" name="id" value="<%= @pairing.id %>">
+  <input type="submit" value="Request Reschedule">
+<% end %>

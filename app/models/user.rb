@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   validates :name, :email, presence: :true
 
+  before_save :default_values
+
   def current_offerings
     offerings.select { |off| off.start_time > Time.now }
   end
@@ -13,4 +15,13 @@ class User < ApplicationRecord
   def past_offerings
     offerings.select { |off| off.start_time < Time.now }
   end
+
+  protected
+
+  def default_values
+    if self.url.length == 0
+      self.url = "https://ewedit.files.wordpress.com/2016/12/baby-groot.jpg?w=612"
+    end
+  end
+
 end

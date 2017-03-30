@@ -7,5 +7,11 @@ class UserMailer < ActionMailer::Base
     mail(to: @mentor.email, subject: 'Someone signed up to pair with you!')
   end
 
+  def reschedule_request_email(pairing, request, mentor)
+    @pairing = pairing
+    @mentor = mentor
+    @request = request
+    mail(to: @mentor.email, subject: 'Your pair wants to reschedule!')
+  end
 
 end
