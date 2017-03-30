@@ -16,11 +16,19 @@
 .nav-wrapper{
   background-color: #19ABB5;
 }
+.avatar-image{
+  height:256px;
+  width:256px;
+}
+
 
 .nav-mobile-text{
   color:#222222;
 }
-
+.show-page-card{
+  margin-left: 10%;
+  margin-right: 10%;
+}
 .brand-logo{
   color:#222222;
 }
