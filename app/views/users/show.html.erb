@@ -1,10 +1,12 @@
 <h1 class="center">Hello <%= current_user.name.capitalize %></h1>
 
 <div class="row">
-  <div class="col s10 offset-s2">
+  <div class="col s8 push-s2">
     <% if !current_user.current_offerings.empty? %>
       <h4> Current pairing offers </h4>
-      <%= render partial: "/pairings/offered_pairing", collection: current_user.current_offerings %>
+      <ul>
+        <%= render partial: "/pairings/offered_pairing", collection: current_user.current_offerings %>
+      </ul>
     <% else %>
       <h4> No Current offerings, make yaself one</h4>
     <% end %>
@@ -12,10 +14,12 @@
 </div>
 
 <div class="row">
-  <div class="col s10 offset-s2">
+  <div class="col s8 offset-s2">
     <% if !current_user.menteeships.empty? %>
     <h4> Current reserved pairs </h4>
-      <%= render partial: "/pairings/offered_pairing", collection: current_user.menteeships %>
+      <ul>
+        <%= render partial: "/pairings/offered_pairing", collection: current_user.menteeships %>
+      </ul>
     <% else %>
       <h4> Not Signed up for any pairings</h4>
     <% end %>
@@ -23,10 +27,12 @@
 </div>
 
 <div class="row">
-  <div class="col s10 offset-s2">
+  <div class="col s8 offset-s2">
     <% if !current_user.past_offerings.empty? %>
     <h4> Past pairs </h4>
-      <%= render partial: "/pairings/offered_pairing", collection: current_user.past_offerings %>
+      <ul>
+        <%= render partial: "/pairings/offered_pairing", collection: current_user.past_offerings %>
+      </ul>
     <% else %>
       <h4> No completed/expired pairings</h4>
     <% end %>

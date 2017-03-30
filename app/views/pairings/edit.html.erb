@@ -1,8 +1,9 @@
-<h1>Edit this Pairing</h1>
+
 
 <%= render '/shared/error_messages' %>
 
 <% if @pairing.mentor_id == current_user.id %>
+  <h1>Edit this Pairing</h1>
   <%= form_for :pairing, url: user_pairing_path(@pairing), method: :patch do |f| %>
     <p>
       <%= f.label :start_time %><br>
@@ -14,6 +15,7 @@
     </p>
   <% end %>
 <% else %>
+<h1>Add a topic for your pairing </h1>
   <%= form_for :pairing, url: user_pairing_path(@pairing), method: :patch do |f| %>
     <p>
       <%= f.label :topic %><br>
