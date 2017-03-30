@@ -5,7 +5,7 @@
 <%= form_for @pairing, url: user_pairings_path(current_user.id) do |f| %>
   <p>
     <%= f.label :start_time %><br>
-    <%= f.text_field :start_time %>
+    <%= f.datetime_field :start_time %>
   </p>
 
   <p>
