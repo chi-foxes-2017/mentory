@@ -10,6 +10,7 @@ class PairingsController < ApplicationController
   end
 
   def new
+    return redirect_to new_user_pairing_path(current_user.id) if !authorized?(params[:user_id])
     @pairing = Pairing.new
   end
 
@@ -39,9 +40,9 @@ class PairingsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @pairing = @user.pairings.new(pairing_params)
+    @pairing = @user.offerings.new(pairing_params)
     if @pairing.save
-      redirect_to user_pairings_path
+      redirect_to root_path
     else
       @errors = @pairing.errors.full_messages
       render 'new'
@@ -60,7 +61,7 @@ class PairingsController < ApplicationController
 
   private
   def pairing_params
-    params.require(:pairing).permit(:mentor_id, :mentee_id, :topic, :start_time)
+    params.require(:pairing).permit(:mentor_id, :topic, :start_time)
   end
 
 end
