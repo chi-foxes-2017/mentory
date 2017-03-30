@@ -6,4 +6,6 @@ class UserMailer < ActionMailer::Base
     @pairing = pairing
     mail(to: @mentor.email, subject: 'Someone signed up to pair with you!')
   end
+
+
 end
