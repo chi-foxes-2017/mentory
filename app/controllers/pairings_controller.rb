@@ -38,8 +38,8 @@ class PairingsController < ApplicationController
   end
 
   def create
-    @pairing = Pairing.new(pairing_params)
-    @pairing.mentor_id == session[:user_id]
+    @user = User.find(params[:user_id])
+    @pairing = @user.pairings.new(pairing_params)
     if @pairing.save
       redirect_to user_pairings_path
     else
