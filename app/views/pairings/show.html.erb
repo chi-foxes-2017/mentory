@@ -1,12 +1,21 @@
-<p>
-  <strong>Date: </strong>
-  <%= @pairing.start_time.strftime('%A, %b %d, %Y') %><br>
-  <strong>Time: </strong>
-  <%= @pairing.start_time.strftime('%I:%M %p') %>
-</p>
-
-<p>
-  <strong>Mentor: </strong>
-  <%= User.find(@pairing.mentor_id).name %>
-</p>
-
+<div class="row">
+  <div class="col s10 m10 push-s2">
+    <div class="card horizontal container">
+      <div class="card-image">
+        <% @user = User.find(@pairing.mentor_id) %>
+        <img src="<%= @user.url %>" alt="avatar" class="avatar-image">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <span>Starts at: <%= @pairing.start_time %></span>
+          <span>With: <%= @user.name %></span>
+        </div>
+        <div class="card-action">
+          <% if authorized?(@pairing.mentor_id) %>
+            <%= link_to "Reschedule", edit_user_pairing_path(current_user.id, @pairing.id) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

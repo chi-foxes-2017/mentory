@@ -1,12 +1,22 @@
-<li>
-  <span>Starts at: <%= offered_pairing.start_time %></span>
-  <% @user = User.find(offered_pairing.mentor_id) %>
-  <span>With: <%= @user.name %></span>
-  <img src="<%= @user.url %>" alt="avatar">
-  <% if authorized?(offered_pairing.mentor_id) %>
-    <%= link_to "Reschedule", edit_user_pairing_path(current_user.id, offered_pairing.id) %>
-  <% end %>
-  <% if logged_in? && (offered_pairing.mentor_id != current_user.id) %>
-    <%= link_to "Sign Up!", edit_user_pairing_path(offered_pairing.mentor_id, offered_pairing.id) %>
-  <% end %>
+<li id="pairing-<%= offered_pairing.id %>">
+  <div class="card horizontal">
+    <div class="card-image">
+      <% @user = User.find(offered_pairing.mentor_id) %>
+      <img src="<%= @user.url %>" alt="avatar">
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <span>Starts at: <%= offered_pairing.start_time %></span>
+        <span>With: <%= @user.name %></span>
+      </div>
+      <div class="card-action">
+        <% if authorized?(offered_pairing.mentor_id) %>
+          <%= link_to "Reschedule", edit_user_pairing_path(current_user.id, offered_pairing.id) %>
+        <% end %>
+        <% if logged_in? && (offered_pairing.mentor_id != current_user.id) %>
+          <%= link_to "Sign Up!", edit_user_pairing_path(offered_pairing.mentor_id, offered_pairing.id) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </li>
