@@ -12,6 +12,12 @@
   </div>
 
   <div class="col s3 right pull-s1">
-   <%= render "pairings/new" %>
+    <div class="card index-form-card">
+      <% if logged_in? %>
+        <%= render "pairings/new" %>
+      <% else %>
+        <h5> Once you log in you'll be able to access the pairing functionalities</h5>
+      <% end %>
+    </div>
   </div>
 </div>

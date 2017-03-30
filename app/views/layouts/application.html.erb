@@ -22,7 +22,7 @@
     <nav>
       <div class="nav-wrapper">
       <%= link_to "Mentory", root_path, class: "brand-logo nav-mobile-text" %>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <ul id="nav-mobile" class="right">
           <% if logged_in? %>
             <li><%= link_to "#{current_user.name.capitalize}\'s page", user_path(current_user.id), method: :get, class: "nav-mobile-text"  %></li>
             <li><%= link_to 'Log out', session_path(session[:user_id]), method: :delete, class: "nav-mobile-text"  %></li>
