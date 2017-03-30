@@ -1,13 +1,14 @@
 require "rails_helper"
 
 RSpec.describe "Routing to pairings", :type => :routing do
+  let(:user) {User.create(name: "Karl", email: "karl@karl", password: "karl")}
 
   it "routes GET /pairings to pairings#index" do
-    expect(:get => "/pairings").to route_to("pairings#index")
+    expect(:get => root_path).to route_to("pairings#index")
   end
 
   it "routes GET /pairings/1 to pairings#show" do
-    expect(:get => "/pairings/1").to route_to("pairings#show", :id => "1")
+    expect(:get => "/user/pairings/1").to route_to("pairings#show", :id => "1")
   end
 
   it "routes GET /pairings/new to pairings#new" do
