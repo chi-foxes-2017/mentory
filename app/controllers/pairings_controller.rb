@@ -2,6 +2,7 @@ class PairingsController < ApplicationController
 
   def index
     @offered_pairings = Pairing.where(mentee_id: nil).order(start_time: :asc)
+    @pairing = Pairing.new
   end
 
   def show
