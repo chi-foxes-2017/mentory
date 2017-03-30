@@ -7,6 +7,13 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
 
+    <!-- Compiled and minified JavaScript -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -15,7 +22,7 @@
     <nav>
       <div class="nav-wrapper">
       <%= link_to "Mentory", root_path, class: "brand-logo nav-mobile-text" %>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <ul id="nav-mobile" class="right">
           <% if logged_in? %>
             <li><%= link_to "#{current_user.name.capitalize}\'s page", user_path(current_user.id), method: :get, class: "nav-mobile-text"  %></li>
             <li><%= link_to 'Log out', session_path(session[:user_id]), method: :delete, class: "nav-mobile-text"  %></li>
