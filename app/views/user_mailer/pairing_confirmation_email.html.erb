@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>You have a new pair, <%= @mentor.name %></h1>
+    <p>
+      A mentee has signed up to pair with you,
+      <strong>Mentee: <%= User.find_by(id: @pairing.mentee_id).name %><br>
+      <strong>Date: </strong>
+      <%= @pairing.start_time.strftime('%A, %b %d, %Y') %><br>
+      <strong>Time: </strong>
+      <%= @pairing.start_time.strftime('%I:%M %p') %>
+      <strong>Topic: </strong>
+      <%= @pairing.topic %>
+    </p>
+    <p>
+      To login to the site, just follow this link: <a href="https://secure-crag-97355.herokuapp.com/sessions/new">Login!</a>
+    </p>
+    <p>Thanks for pairing and have a great day!</p>
+  </body>
+</html>
