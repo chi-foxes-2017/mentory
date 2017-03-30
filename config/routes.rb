@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  resources :users, only: [:new, :create, :show]
+  # resources :users, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
-  root 'splage#index'
 
-  resources :users do
+  resources :users, only: [:new, :create, :show] do
     resources :pairings
   end
 
-  get '/pairings' => 'pairings#index'
-
+  root 'pairings#index'
 end
