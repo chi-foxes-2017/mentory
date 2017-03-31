@@ -7,8 +7,9 @@
       </div>
       <div class="card-stacked">
         <div class="card-content">
-          <span>Starts at: <%= @pairing.start_time %></span>
-          <span>With: <%= @user.name %></span>
+          <span><H5><strong>Date:</strong> <%= @pairing.start_time.strftime('%A, %b %d, %Y') %></H5></span><br>
+          <span><h5><strong>Time:</strong> <%= @pairing.start_time.strftime('%I:%M %p') %></h5></span><br>
+          <span><h5><strong>With:</strong> <%= @user.name %></h5></span>
         </div>
         <div class="card-action">
           <% if authorized?(@pairing.mentor_id) %>

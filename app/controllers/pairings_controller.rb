@@ -2,6 +2,7 @@ class PairingsController < ApplicationController
 
   def index
     @offered_pairings = Pairing.where(mentee_id: nil).order(start_time: :asc)
+    @pairing = Pairing.new
   end
 
   def show
@@ -65,7 +66,7 @@ class PairingsController < ApplicationController
     @pairing = Pairing.find(params[:id])
     if @pairing.mentor_id == session[:user_id]
       @pairing.destroy
-      redirect_to user_pairing_path
+      redirect_to root_path
     else
       redirect_to new_session_path
     end

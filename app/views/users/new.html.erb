@@ -1,22 +1,24 @@
-<%= form_for @user do |f| %>
-  <%= render '/shared/error_messages' %>
-  <p>
-    <%= f.label :name %> <br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<div class="card index-form-card">
+  <%= form_for @user do |f| %>
+    <%= render '/shared/error_messages' %>
+    <p>
+      <%= f.label :name %> <br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </p>
+    <p>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </p>
+    <p>
+      <%= f.label :url, "Add an image to represent your face" %><br>
+      <%= f.text_field :url %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+</div>
