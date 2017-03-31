@@ -5,6 +5,7 @@ Things you'll need to be up to date in our code --
 * ruby on rails 5.x installed
 * heroku account: we are using postgres for our database with the intention of deploying on heroku.
 * the gmail account name and password, ask Liz, Kristen, or Karl
+
 The above gmail info is for sending emails to mentors/mentees for status updates on their pairings
 
 Clone down:
