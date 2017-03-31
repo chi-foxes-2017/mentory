@@ -1,7 +1,7 @@
 <% provide(:title, "Log in") %>
 <h1>Log in</h1>
 
-<div class="card index-form-card">
+<div class="card index-form-card col s8 push-s2">
   <%= form_for(:session, url: sessions_path) do |f| %>
     <%= render '/shared/error_messages' %>
     <%= f.label :email %>
@@ -10,6 +10,6 @@
     <%= f.label :password %>
     <%= f.password_field :password, class: 'form-control' %>
 
-    <%= f.submit "Log In", class: "btn btn-primary" %>
+    <%= f.submit "Log In", class: "waves-effect waves-light btn" %>
   <% end %>
 </div>
