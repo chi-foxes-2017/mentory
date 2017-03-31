@@ -1,24 +1,29 @@
-<div class="card index-form-card col s8 push-2">
-  <%= form_for @user do |f| %>
-    <%= render '/shared/error_messages' %>
-    <p>
-      <%= f.label :name %> <br>
-      <%= f.text_field :name %>
-    </p>
-    <p>
-      <%= f.label :email %><br>
-      <%= f.text_field :email %>
-    </p>
-    <p>
-      <%= f.label :password %><br>
-      <%= f.password_field :password %>
-    </p>
-    <p>
-      <%= f.label :url, "Add an image to represent your face" %><br>
-      <%= f.text_field :url %>
-    </p>
-    <p>
-      <%= f.submit, class: "waves-effect waves-light btn" %>
-    </p>
-  <% end %>
+<h1 class="center"> Register</h1>
+<div class="row">
+  <div class="col s8 push-s2">
+  <div class="card index-form-card">
+    <%= form_for @user do |f| %>
+      <%= render '/shared/error_messages' %>
+      <p>
+        <%= f.label :name %> <br>
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.label :email %><br>
+        <%= f.text_field :email %>
+      </p>
+      <p>
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
+      </p>
+      <p>
+        <%= f.label :url, "Add an image to represent your face" %><br>
+        <%= f.text_field :url %>
+      </p>
+      <p>
+        <%= f.submit "Register", class: "waves-effect waves-light btn" %>
+      </p>
+    <% end %>
+  </div>
+</div>
 </div>
