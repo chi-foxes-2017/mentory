@@ -13,6 +13,7 @@
       <div class="card-action">
         <% if authorized?(offered_pairing.mentor_id) %>
           <%= link_to "Reschedule", edit_user_pairing_path(current_user.id, offered_pairing.id) %>
+          <%= link_to "Delete", user_pairing_path(current_user.id, offered_pairing.id), data: {:confirm => "Are you sure?"}, :method => :delete %>
         <% end %>
         <% if logged_in? && (offered_pairing.mentor_id != current_user.id) %>
           <%= link_to "Sign Up!", edit_user_pairing_path(offered_pairing.mentor_id, offered_pairing.id) %>
