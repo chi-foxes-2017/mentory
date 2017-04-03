@@ -2,7 +2,7 @@ class PairingsController < ApplicationController
   before_action :find_pairing, only: [:show, :update, :edit, :destroy, :reschedule, :requested]
 
   def index
-    @offered_pairings = Pairing.where(mentee_id: nil).order(start_time: :asc)
+    @offered_pairings = Pairing.where(mentee_id: nil).order(start_time: :asc).page params[:page]
     @pairing = Pairing.new
   end
 
@@ -71,9 +71,9 @@ class PairingsController < ApplicationController
   end
 
   def requested
-    mentor = User.find(pairing.mentor_id)
+    mentor = User.find(@pairing.mentor_id)
     request = params[:request]
-    UserMailer.reschedule_request_email(pairing, request, mentor).deliver_now
+    UserMailer.reschedule_request_email(@pairing, request, mentor).deliver_now
     redirect_to root_path
   end
 
