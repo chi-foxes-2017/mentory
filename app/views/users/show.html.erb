@@ -5,7 +5,7 @@
     <% if !current_user.current_offerings.empty? %>
       <h4> Current pairing offers </h4>
       <ul>
-        <%= render partial: "/pairings/offered_pairing", collection: current_user.current_offerings %>
+        <%= render current_user.current_offerings %>
       </ul>
     <% else %>
       <h4> No Current offerings, make yaself one</h4>
@@ -18,7 +18,7 @@
     <% if !current_user.menteeships.empty? %>
     <h4> Current reserved pairs </h4>
       <ul>
-        <%= render partial: "/pairings/offered_pairing", collection: current_user.menteeships %>
+        <%= render current_user.menteeships %>
       </ul>
     <% else %>
       <h4> Not Signed up for any pairings</h4>
@@ -31,7 +31,7 @@
     <% if !current_user.past_offerings.empty? %>
     <h4> Past pairs </h4>
       <ul>
-        <%= render partial: "/pairings/offered_pairing", collection: current_user.past_offerings %>
+        <%= render current_user.past_offerings %>
       </ul>
     <% else %>
       <h4> No completed/expired pairings</h4>

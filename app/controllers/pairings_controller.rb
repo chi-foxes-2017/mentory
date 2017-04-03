@@ -1,12 +1,12 @@
 class PairingsController < ApplicationController
+  before_action :find_pairing, only: [:show, :update, :edit, :destroy, :reschedule, :requested]
 
   def index
-    @offered_pairings = Pairing.where(mentee_id: nil).order(start_time: :asc)
+    @offered_pairings = Pairing.where(mentee_id: nil).order(start_time: :asc).page params[:page]
     @pairing = Pairing.new
   end
 
   def show
-    @pairing = Pairing.find_by(id: params[:id])
     @user = User.find_by(id: params[:mentor_id])
   end
 
@@ -16,8 +16,8 @@ class PairingsController < ApplicationController
   end
 
   def update
-    @pairing = Pairing.find_by(id: params[:id])
     @mentor = User.find_by(id: @pairing.mentor_id)
+
     if params[:pairing][:topic]
       update_params = add_mentee
       @pairing.update_attribute(:mentee_id, current_user.id)
@@ -43,7 +43,6 @@ class PairingsController < ApplicationController
 
   def edit
     @user = User.find(params[:user_id])
-    @pairing = Pairing.find(params[:id])
     if logged_in?
       render 'edit'
     else
@@ -63,7 +62,6 @@ class PairingsController < ApplicationController
   end
 
   def destroy
-    @pairing = Pairing.find(params[:id])
     if @pairing.mentor_id == session[:user_id]
       @pairing.destroy
       redirect_to root_path
@@ -72,19 +70,18 @@ class PairingsController < ApplicationController
     end
   end
 
-  def reschedule
-    @pairing = Pairing.find(params[:id])
-  end
-
   def requested
-    pairing = Pairing.find(params[:id])
-    mentor = User.find(pairing.mentor_id)
+    mentor = User.find(@pairing.mentor_id)
     request = params[:request]
-    UserMailer.reschedule_request_email(pairing, request, mentor).deliver_now
+    UserMailer.reschedule_request_email(@pairing, request, mentor).deliver_now
     redirect_to root_path
   end
 
   private
+  def find_pairing
+    @pairing = Pairing.find(params[:id])
+  end
+
   def pairing_params
     params.require(:pairing).permit(:mentor_id, :start_time)
   end

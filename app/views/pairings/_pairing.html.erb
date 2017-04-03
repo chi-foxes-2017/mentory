@@ -1,0 +1,29 @@
+<li id="pairing-<%= pairing.id %>">
+  <div class="card horizontal">
+    <div class="card-image">
+      <% @user = User.find(pairing.mentor_id) %>
+      <img src="<%= @user.url %>" alt="avatar" class="avatar-image">
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <span><H5><strong>Date:</strong> <%= pairing.start_time.strftime('%A, %b %d, %Y') %></H5></span><br>
+        <span><h5><strong>Time:</strong> <%= pairing.start_time.strftime('%I:%M %p') %></h5></span><br>
+        <span><h5><strong>With:</strong> <%= @user.name %></h5></span>
+      </div>
+      <div class="card-action">
+        <% if authorized?(pairing.mentor_id) %>
+          <%= link_to "Reschedule", edit_user_pairing_path(current_user.id, pairing.id) %>
+          <%= link_to "Delete", user_pairing_path(current_user.id, pairing.id), data: {:confirm => "Are you sure?"}, :method => :delete %>
+        <% end %>
+        <% if logged_in? && (pairing.mentor_id != current_user.id) %>
+          <%= link_to "Sign Up!", edit_user_pairing_path(pairing.mentor_id, pairing.id) %>
+        <% end %>
+        <% if logged_in? %>
+          <% if pairing.mentee_id == current_user.id %>
+            <%= link_to "Request a change!", reschedule_path(pairing) %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</li>

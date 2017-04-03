@@ -6,8 +6,11 @@
 
 <div class="row">
   <div class="col s6 push-s1">
+    <div class="nav-wrapper">
+      <%= paginate @offered_pairings %>
+    </div>
     <ul>
-      <%= render partial: "pairings/offered_pairing", collection: @offered_pairings %>
+      <%= render @offered_pairings %>
     </ul>
   </div>
 

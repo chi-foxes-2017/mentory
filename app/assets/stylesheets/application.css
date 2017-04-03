@@ -16,6 +16,21 @@
 .nav-wrapper{
   background-color: #19ABB5;
 }
+
+.pagination{
+  text-align: center;
+  background-color: #BDDDE1;
+}
+
+.pagination span{
+
+  font-size: 24px;
+  color: #2D425C;
+}
+.pagination span a{
+  color: #2D425C;
+}
+
 .avatar-image{
   height:256px;
   width:256px;
